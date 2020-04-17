@@ -60,12 +60,31 @@
           </div>
           <div class="row mt-1">
             <div class="col">
-              Car Plate
-              <b-form-input :disabled="true" v-model="application.userInfo.carPlate"></b-form-input>
             </div>
             <div class="col">
               Total
               <b-form-input :disabled="true" v-model="total"></b-form-input>
+            </div>
+          </div>
+          <hr/>
+          <div class="row mt-1">
+            <div class="col">
+              First Name
+              <b-form-input v-model="selection.firstname"></b-form-input>
+            </div>
+            <div class="col">
+              Last Name
+              <b-form-input v-model="selection.lastname"></b-form-input>
+            </div>
+          </div>
+          <div class="row mt-1">
+            <div class="col">
+              Car Plate
+              <b-form-input v-model="selection.carPlate"></b-form-input>
+            </div>
+            <div class="col">
+              Phone
+              <b-form-input v-model="selection.phone"></b-form-input>
             </div>
           </div>
           <div class="row mt-4">
@@ -188,7 +207,11 @@ export default {
         end: null,
         spotID: null,
         price: null,
-        total: null
+        total: null,
+        firstname: null,
+        lastname: null,
+        carPlate: null,
+        phone: null,
       }
     };
   },
@@ -200,7 +223,6 @@ export default {
         this.selection.spotID = spot.spot_id;
         this.selection.price = spot.price;
         this.$bvModal.show("reservePopUp");
-        //username, spotID, carplate, date, starttime, endtime, duration, total
       }
     },
     async confirmReservation() {
@@ -222,11 +244,18 @@ export default {
         end: this.selection.end,
         date: this.selection.date,
         total: d * this.selection.price,
-        carPlate: this.application.userInfo.carPlate,
-        member: type
+        carPlate: this.application.userInfo.isAdmin ? this.selection.carPlate:this.application.userInfo.carPlate,
+        member: type,
+        firstname: this.selection.firstname,
+        lastname: this.selection.lastname,
+        phone: this.selection.phone,
       });
 
       if (response) {
+        this.selection.firstname = null;
+        this.selection.lastname = null;
+        this.selection.phone = null;
+        this.selection.carPlate = null;
         this.$parent.openReservation();
       }
     },

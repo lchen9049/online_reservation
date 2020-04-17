@@ -181,8 +181,8 @@ app.get('/getAllUsers', (req, res) => {
 // ******************* Input Reservation ***************** // 
 app.post('/confirmReservation', (req, res) => {
 
-    client.query('INSERT INTO reservations (spot_id, username, reserve_date, time_start, time_end, total, member, car_plate) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
-        [req.body.spotID, req.body.username, req.body.date, req.body.start, req.body.end, req.body.total, req.body.member, req.body.carPlate], (err, result) => {
+    client.query('INSERT INTO reservations (spot_id, username, reserve_date, time_start, time_end, total, member, car_plate, firstname, lastname, phone) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)',
+        [req.body.spotID, req.body.username, req.body.date, req.body.start, req.body.end, req.body.total, req.body.member, req.body.carPlate, req.body.firstname, req.body.lastname, req.body.phone], (err, result) => {
             if (err) {
                 return console.log('FAILED TO INSERT', err);
             }
