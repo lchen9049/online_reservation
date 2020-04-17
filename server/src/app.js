@@ -171,7 +171,7 @@ app.get('/getAllUsers', (req, res) => {
     client.query('SELECT * FROM customers', (err, result) => {
         if (err) {
             res.send(false);
-            return console.log('error retreiving spot query', err);
+            return console.log('error retreiving user query', err);
         }
 
         res.send(result.rows);
