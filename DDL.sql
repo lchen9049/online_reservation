@@ -1,23 +1,23 @@
 create table users
-	(
-		username		varchar(20),
-		pword			varchar(20),
-		isAdmin			boolean,
-		primary key (username)
-	);
+    (
+        username        varchar(20),
+        pword           varchar(20),
+        isAdmin         boolean,
+        primary key (username)
+    );
 
 
 create table staff
-	(
-		username		varchar(50), 
-	 	firstname		varchar(50),
+    (
+        username        varchar(50), 
+        firstname       varchar(50),
         lastname        varchar(50), 
-		primary key (username),
-		foreign key (username) references users (username)
-	);
+        primary key (username),
+        foreign key (username) references users (username)
+    );
 
 create table customers
-	(
+    (
         username            varchar(50), 
         first_name          varchar(50),
         last_name           varchar(50), 
@@ -29,7 +29,7 @@ create table customers
         spot_id             varchar(3),
         monthly_fee         numeric(5),
         primary key (username)
-	);
+    );
 
 create table credit_cards
     (
@@ -65,7 +65,7 @@ create table reservations
         lastname            varchar(20),  
         phone               varchar(20), 
         primary key (username, spot_id),
-		foreign key (username) references users (username),
+        foreign key (username) references users (username),
         foreign key (spot_id) references spots (spot_id) 
 
     );
@@ -75,6 +75,6 @@ create table temp_plate
         username            varchar(50),
         plate_number        varchar(20),
         primary key (username),
-		foreign key (username) references users (username)
+        foreign key (username) references users (username)
     );
 
