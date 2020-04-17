@@ -30,7 +30,7 @@
       <table class="table mt-3">
         <thead class="thead-light">
           <tr>
-              <th scope="col">Username</th>
+            <th scope="col">Username</th>
             <th scope="col">Spot ID</th>
             <th scope="col">Car Plate</th>
             <th scope="col">Start Time</th>
@@ -219,8 +219,8 @@ export default {
             this.today(rev)
         );
     },
-    members: function(){
-        return this.application.users.filter(user => user.member);
+    members: function() {
+      return this.application.users.filter(user => user.member);
     }
   }
 };

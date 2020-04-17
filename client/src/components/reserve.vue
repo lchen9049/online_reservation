@@ -59,14 +59,13 @@
             </div>
           </div>
           <div class="row mt-1">
-            <div class="col">
-            </div>
+            <div class="col"></div>
             <div class="col">
               Total
               <b-form-input :disabled="true" v-model="total"></b-form-input>
             </div>
           </div>
-          <hr/>
+          <hr />
           <div class="row mt-1">
             <div class="col">
               First Name
@@ -211,7 +210,7 @@ export default {
         firstname: null,
         lastname: null,
         carPlate: null,
-        phone: null,
+        phone: null
       }
     };
   },
@@ -244,11 +243,13 @@ export default {
         end: this.selection.end,
         date: this.selection.date,
         total: d * this.selection.price,
-        carPlate: this.application.userInfo.isAdmin ? this.selection.carPlate:this.application.userInfo.carPlate,
+        carPlate: this.application.userInfo.isAdmin
+          ? this.selection.carPlate
+          : this.application.userInfo.carPlate,
         member: type,
         firstname: this.selection.firstname,
         lastname: this.selection.lastname,
-        phone: this.selection.phone,
+        phone: this.selection.phone
       });
 
       if (response) {
@@ -280,8 +281,7 @@ export default {
         }
       }
     },
-    filterU(user){
-
+    filterU(user) {
       var userStart = this.map(user.start_time);
       var userEnd = this.map(user.start_time);
       var sStart = this.map(this.selection.start);
@@ -304,8 +304,7 @@ export default {
       var revs = this.application.reservations.filter(rev => this.filterR(rev));
 
       var members = this.application.users.filter(
-        user =>
-          user.member && this.filterU(user)
+        user => user.member && this.filterU(user)
       );
 
       return this.application.spots.filter(

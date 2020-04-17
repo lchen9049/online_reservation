@@ -46,115 +46,132 @@ export default {
   props: ["application", "isAdmin"],
   data() {
     return {
-      month: null,
+      month: null
     };
   },
   methods: {
-    memberMonthlyRev(){
+    memberMonthlyRev() {
       var sum = 0;
       var i;
-      
-      for(i=0;i<this.application.users.length;i++){
-        if(this.application.users[i].member) sum += parseInt(this.application.users[i].monthly_fee);
+
+      for (i = 0; i < this.application.users.length; i++) {
+        if (this.application.users[i].member)
+          sum += parseInt(this.application.users[i].monthly_fee);
       }
       return sum;
     },
-    nonMemberMonthlyRev(){
+    nonMemberMonthlyRev() {
       var sum = 0;
       var i;
       var today = new Date();
-      
-      for(i=0;i<this.application.reservations.length;i++){
-        if(this.application.reservations[i].member != 'walkin'){
-          if(parseInt(this.application.reservations[i].reserve_date.substring(5,7)) == today.getMonth()+1 ){
+
+      for (i = 0; i < this.application.reservations.length; i++) {
+        if (this.application.reservations[i].member != "walkin") {
+          if (
+            parseInt(
+              this.application.reservations[i].reserve_date.substring(5, 7)
+            ) ==
+            today.getMonth() + 1
+          ) {
             sum += parseInt(this.application.reservations[i].total);
           }
         }
       }
       return sum;
     },
-    walkinMonthlyRev(){
+    walkinMonthlyRev() {
       var sum = 0;
       var i;
       var today = new Date();
-      
-      for(i=0;i<this.application.reservations.length;i++){
-        if(this.application.reservations[i].member == 'walkin'){
-          if(parseInt(this.application.reservations[i].reserve_date.substring(5,7)) == today.getMonth()+1 ){
+
+      for (i = 0; i < this.application.reservations.length; i++) {
+        if (this.application.reservations[i].member == "walkin") {
+          if (
+            parseInt(
+              this.application.reservations[i].reserve_date.substring(5, 7)
+            ) ==
+            today.getMonth() + 1
+          ) {
             sum += parseInt(this.application.reservations[i].total);
           }
         }
       }
       return sum;
     },
-    numMem(){
+    numMem() {
       var members = 0;
       var i;
-      for(i=0;i<this.application.users.length;i++){
-        if(this.application.users[i].member) members++;
+      for (i = 0; i < this.application.users.length; i++) {
+        if (this.application.users[i].member) members++;
       }
       return members;
     },
-    numNon(){
+    numNon() {
       var nonmembers = 0;
       var i;
-      for(i=0;i<this.application.users.length;i++){
-        if(!this.application.users[i].member) nonmembers++;
+      for (i = 0; i < this.application.users.length; i++) {
+        if (!this.application.users[i].member) nonmembers++;
       }
       return nonmembers;
     },
-    numWalkin(){
+    numWalkin() {
       var walkin = 0;
       var i;
-      for(i=0;i<this.application.reservations.length;i++){
-        if(this.application.reservations[i].member == 'walkin') walkin++;
+      for (i = 0; i < this.application.reservations.length; i++) {
+        if (this.application.reservations[i].member == "walkin") walkin++;
       }
       return walkin;
     },
-    totalCust(){
+    totalCust() {
       return this.numMem() + this.numNon() + this.numWalkin();
     },
-    memberUsage(){
+    memberUsage() {
       var arr = [];
       var i;
-      for(i=0;i<this.application.users.length;i++){
+      for (i = 0; i < this.application.users.length; i++) {
         var user = this.application.users[i];
-        if(user.member){
-          if(!arr.includes(user.spot_id)){
+        if (user.member) {
+          if (!arr.includes(user.spot_id)) {
             arr.push(user.spot_id);
           }
         }
       }
       return arr.length;
     },
-    nonMemberUsage(){
+    nonMemberUsage() {
       var arr = [];
       var i;
       var today = new Date();
-      for(i=0;i<this.application.reservations.length;i++){
+      for (i = 0; i < this.application.reservations.length; i++) {
         var rev = this.application.reservations[i];
-        if(rev.member != 'walkin' && parseInt(rev.reserve_date.substring(5,7)) == today.getMonth()+1 ){
-          if(!arr.includes(rev.spot_id)){
+        if (
+          rev.member != "walkin" &&
+          parseInt(rev.reserve_date.substring(5, 7)) == today.getMonth() + 1
+        ) {
+          if (!arr.includes(rev.spot_id)) {
             arr.push(rev.spot_id);
           }
         }
       }
       return arr.length;
     },
-    walkInUsage(){
+    walkInUsage() {
       var arr = [];
       var i;
       var today = new Date();
-      for(i=0;i<this.application.reservations.length;i++){
+      for (i = 0; i < this.application.reservations.length; i++) {
         var rev = this.application.reservations[i];
-        if(rev.member == 'walkin' && parseInt(rev.reserve_date.substring(5,7)) == today.getMonth()+1 ){
-          if(!arr.includes(rev.spot_id)){
+        if (
+          rev.member == "walkin" &&
+          parseInt(rev.reserve_date.substring(5, 7)) == today.getMonth() + 1
+        ) {
+          if (!arr.includes(rev.spot_id)) {
             arr.push(rev.spot_id);
           }
         }
       }
       return arr.length;
-    },
+    }
   }
 };
 </script>

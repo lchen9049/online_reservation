@@ -31,8 +31,9 @@
       <div v-if="application.userInfo.tempPlate != null">
         <div class="row mt-4">
           <div class="col">
-            Temporary Car Plate <i>(Will be deleted tomorrow)</i>
-        <b-form-input :disabled="true" v-model="application.userInfo.tempPlate"></b-form-input>
+            Temporary Car Plate
+            <i>(Will be deleted tomorrow)</i>
+            <b-form-input :disabled="true" v-model="application.userInfo.tempPlate"></b-form-input>
           </div>
           <div class="col"></div>
         </div>
@@ -126,10 +127,10 @@ export default {
       this.application.userInfo.tempPlate = this.temp;
       response = await AuthenticationService.addTemp({
         username: this.application.userInfo.userName,
-        plate: this.application.userInfo.tempPlate,
+        plate: this.application.userInfo.tempPlate
       });
       this.$bvModal.hide("tempPlatePop");
-      if(response) console.log('success');
+      if (response) console.log("success");
     }
   }
 };

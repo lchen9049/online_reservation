@@ -7,10 +7,12 @@
       <div class="col">
         <div class="float right">
           <div class="row">
-          <div class="col-8">
-            <b-form-input></b-form-input>
-          </div>
-          <div class="col"><b-button>Search</b-button></div>
+            <div class="col-8">
+              <b-form-input></b-form-input>
+            </div>
+            <div class="col">
+              <b-button>Search</b-button>
+            </div>
           </div>
         </div>
       </div>
