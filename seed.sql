@@ -26,11 +26,15 @@ insert into staff (username, firstname, lastname) values ('admin', 'firstname', 
 insert into users (username, password, isadmin) values ('member1', '1', false);
 insert into customers (username, first_name, last_name, phone_number, member, car_plate, start_time, end_time, spot_id, monthly_fee)
     values ('member1', 'Richard', 'Salgado', '3122502333', true, 'A12345678', -8, 3, 'B4', 2520);
+insert into credit_card (username, billing_address, card_number, card_pin, city, state, zip_code)
+	values ('member1', '111 w 41st', '123321321', '123', 'Chicago', 'IL', '60608');
 
 --Insert sample nonmember
 insert into users (username, password, isadmin) values ('nonmember1', '1', false);
 insert into customers (username, first_name, last_name, phone_number, member, car_plate, start_time, end_time, spot_id, monthly_fee)
-    values ('nonmember1', 'Henry', 'Cheng', '9178861314', false, 'J66666666', null, null, null, null);
+    values ('nonmember1', 'Henry', 'Cheng', '9178861314', false, 'J66666666', null, null, null, null);	
+insert into credit_card (username, billing_address, card_number, card_pin, city, state, zip_code)
+	values ('nonmember1', '2055 Beaver Ruin Rd #F3', '123321321', '123', 'Chicago', 'IL', '60608');
 
 --Insert some sample reservation
 insert into reservations (username, spot_id, reserve_date, time_start, time_end, total, member, car_plate, firstname, lastname, phone)

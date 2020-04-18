@@ -31,7 +31,7 @@ create table customers
         primary key (username)
     );
 
-create table credit_cards
+create table credit_card
     (
         username            varchar(50),
         billing_address	    varchar(100),
@@ -56,8 +56,8 @@ create table reservations
         username            varchar(50),
         spot_id             varchar(3),
         reserve_date        varchar(10),
-        time_start          varchar(10),
-        time_end            varchar(10),
+        time_start          numeric(10),
+        time_end            numeric(10),
         total               numeric(5),
         member              varchar(20), 
         car_plate           varchar(20),
