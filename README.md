@@ -1,9 +1,9 @@
 # online_reservation
 
 To run application you need the following:
-  1.pgAdmin - database
-  2.node.js
-  3.vue.js - npm install -g @vue/cli
+1. pgAdmin - database
+2. node.js
+3. vue.js - npm install -g @vue/cli
   
 #Setting up the project
 1. Clone the project
@@ -26,6 +26,6 @@ To run application you need the following:
 7. Change the owner of the reservation database to pevn_admin
 
 #Admin info
-username = admin
-password = admin
-Note to check the staff checkbox
+1. username = admin
+2. password = admin
+3. Note to check the staff checkbox
